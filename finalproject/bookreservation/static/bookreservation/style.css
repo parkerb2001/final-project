@@ -1,0 +1,37 @@
+.login {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.content-wrapper {
+    height: 90vh;
+    width: 100%;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-table-style {
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+
+}
+
+.table-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.links {
+    a {
+margin: padding 3px;}
+}

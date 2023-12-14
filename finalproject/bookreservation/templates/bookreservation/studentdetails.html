@@ -1,0 +1,41 @@
+{% extends "bookreservation/base.html" %} {% block content %}
+<div class="table-wrapper">
+  <table>
+    <thead class="dashboard-table-style">
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Major</th>
+        <th>Year</th>
+        <th>GPA</th>
+      </tr>
+    </thead>
+    <tbody class="dashboard-table-style">
+      {% for student in data%}
+      <tr>
+        <td>{{student.id}}</td>
+        <td>{{student.first_name}}</td>
+        <td>{{student.last_name}}</td>
+        <td>{{student.major}}</td>
+        <td>{{student.year}}</td>
+        <td>{{student.gpa}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="pagination">
+  <span class="step-links">
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span> Page {{ page.number }} of {{ page.paginator.num_pages }}. </span>
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">next</a>
+    {% endif %}
+  </span>
+</div>
+
+{% endblock %}

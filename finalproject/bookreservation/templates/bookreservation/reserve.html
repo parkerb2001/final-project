@@ -1,0 +1,43 @@
+{% extends "bookreservation/base.html" %} {% block content %}
+<div>
+  {% csrf_token %}
+  <label for="students">Student</label>
+  <select name="students" id="students">
+    {% for student in students%}
+    <option value="{{student.id}}">
+      {{student.first_name}} {{student.last_name}}
+    </option>
+    {% endfor %}
+  </select>
+  <label for="ooks">Book</label>
+  <select name="books" id="books">
+    {% for book in books%}
+    <option value="{{book.id}}">{{book.name}}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Submit" id="submitBtn" />
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+  $('document').ready(function() {
+      $('submitBtn').click(function() {
+      })
+  })
+  document.getElementById('submitBtn').onclick = function() {
+    let student = document.getElementById('students').value;
+    let book = document.getElementById('books').value;
+
+    $.ajax({
+        url: '{% url 'reservePost' %}',
+        data: {
+            student: student,
+            book: book
+        },
+        success: () => {console.log('test')}
+    });
+  };
+</script>
+
+{% endblock %}
